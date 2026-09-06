@@ -1,0 +1,228 @@
+/* ---- 色票 (以「拆鞋盒」為概念：牛皮紙箱棕底，配 Kobe 招牌的湖人紫金點綴) ---- */
+:root {
+  --box-kraft: #cbb499;    /* 鞋盒牛皮紙色，作為底色 */
+  --box-kraft-dark: #6b5b46;
+  --ink: #241c14;          /* 主要文字色 */
+  --lakers-purple: #4a2c6d;
+  --lakers-gold: #b8862e;
+  --card-bg: #f4ecdf;
+  --line: rgba(36, 28, 20, 0.18);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--box-kraft);
+  color: var(--ink);
+  font-family: "Noto Sans TC", "Helvetica Neue", Arial, sans-serif;
+}
+
+body {
+  background-image:
+    radial-gradient(rgba(36,28,20,0.05) 1px, transparent 1px);
+  background-size: 14px 14px;
+}
+
+.site-header {
+  padding: 64px 24px 40px;
+  text-align: center;
+  border-bottom: 2px solid var(--box-kraft-dark);
+}
+
+.header-inner { max-width: 620px; margin: 0 auto; }
+
+.kicker {
+  margin: 0 0 10px;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  color: var(--lakers-purple);
+  font-weight: 600;
+}
+
+.site-header h1 {
+  margin: 0 0 14px;
+  font-family: Georgia, "Noto Serif TC", serif;
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.site-header .sub {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--box-kraft-dark);
+}
+
+main {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 48px 24px 80px;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 28px;
+}
+
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 4px 4px 0 var(--box-kraft-dark);
+  opacity: 0;
+  animation: card-in 0.55s ease-out forwards;
+}
+
+@keyframes card-in {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card { animation: none; opacity: 1; }
+}
+
+.card-photo-wrap {
+  position: relative;
+  cursor: zoom-in;
+}
+
+.card-photo {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  display: block;
+  background: var(--box-kraft-dark);
+  border-bottom: 1px solid var(--line);
+}
+
+.card-photo-count {
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
+  background: rgba(36, 28, 20, 0.72);
+  color: #fff;
+  font-size: 0.72rem;
+  padding: 2px 8px;
+  border-radius: 100px;
+}
+
+.card-body {
+  padding: 16px 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+
+.card-name {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.card-meta {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--box-kraft-dark);
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.card-price {
+  margin-top: auto;
+  padding-top: 10px;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--lakers-purple);
+}
+
+.card-tag {
+  display: inline-block;
+  margin-top: 2px;
+  font-size: 0.75rem;
+  padding: 3px 9px;
+  border-radius: 100px;
+  background: var(--lakers-gold);
+  color: #fff;
+  width: fit-content;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--box-kraft-dark);
+  font-size: 1.05rem;
+}
+
+.site-footer {
+  text-align: center;
+  padding: 30px 20px 50px;
+  font-size: 0.85rem;
+  color: var(--box-kraft-dark);
+}
+
+@media (max-width: 480px) {
+  .site-header { padding: 48px 20px 32px; }
+  main { padding: 32px 16px 60px; }
+}
+
+/* ---- 燈箱 (多圖瀏覽) ---- */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(20, 15, 10, 0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.lightbox[hidden] { display: none; }
+
+.lightbox-img {
+  max-width: min(88vw, 640px);
+  max-height: 80vh;
+  object-fit: contain;
+  border-radius: 4px;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+}
+
+.lightbox-close,
+.lightbox-nav {
+  position: absolute;
+  background: rgba(244, 236, 223, 0.12);
+  color: #f4ecdf;
+  border: none;
+  cursor: pointer;
+  font-size: 1.4rem;
+  line-height: 1;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+}
+
+.lightbox-close:hover,
+.lightbox-nav:hover { background: rgba(244, 236, 223, 0.24); }
+
+.lightbox-close { top: 20px; right: 20px; }
+.lightbox-prev { left: 16px; top: 50%; transform: translateY(-50%); }
+.lightbox-next { right: 16px; top: 50%; transform: translateY(-50%); }
+
+.lightbox-count {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--box-kraft);
+  font-size: 0.85rem;
+  margin: 0;
+}

@@ -1,0 +1,36 @@
+[
+  {
+    "name": "Nike Kobe 6 Protro \"Grinch\"",
+    "size": "US 10",
+    "condition": "95新・附原盒",
+    "price": 12000,
+    "tag": "熱門",
+    "images": [
+      "https://placehold.co/600x600?text=Kobe+6+-+1",
+      "https://placehold.co/600x600?text=Kobe+6+-+2",
+      "https://placehold.co/600x600?text=Kobe+6+-+3"
+    ]
+  },
+  {
+    "name": "Nike Kobe 8 Protro \"Halo\"",
+    "size": "US 9.5",
+    "condition": "9成新",
+    "price": 9500,
+    "images": [
+      "https://placehold.co/600x600?text=Kobe+8+-+1",
+      "https://placehold.co/600x600?text=Kobe+8+-+2"
+    ]
+  },
+  {
+    "name": "Nike Kobe 4 Protro \"Gift of Mamba\"",
+    "size": "US 11",
+    "condition": "全新未拆",
+    "price": 15000,
+    "tag": "稀有",
+    "images": [
+      "https://placehold.co/600x600?text=Kobe+4+-+1",
+      "https://placehold.co/600x600?text=Kobe+4+-+2",
+      "https://placehold.co/600x600?text=Kobe+4+-+3"
+    ]
+  }
+]
